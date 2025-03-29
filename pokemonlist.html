@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeGridso - Pokemon List</title>
+    <link rel="stylesheet" href="mainPageStyle.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo"></div>
+      <div class="mainTitle">PokeGridso</div>
+      <div class="otherPages">
+        <a href="gamechooser.html">Game Chooser</a>
+        <a href="pokemonlist.html" class="active">Pokemon List</a>
+        <a href="contactme.html">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1>Pokemon List</h1>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Filter Pokemon</h2>
+        </div>
+
+        <div class="filter-controls">
+          <div class="filter-group">
+            <label for="dropdown">Select Categories:</label>
+            <input
+              list="categories"
+              id="dropdown"
+              placeholder="Type to search categories"
+            />
+            <datalist id="categories"></datalist>
+          </div>
+
+          <div class="filter-group">
+            <label for="extra-select">Sort by:</label>
+            <select id="extra-select">
+              <option value="-1">PokeDex Order</option>
+              <option value="0">Weight</option>
+              <option value="1">Shine</option>
+              <option value="2">Speed</option>
+              <option value="3">Learnset</option>
+              <option value="4">Height</option>
+              <option value="5">Stats</option>
+              <option value="6">SmashRate</option>
+              <option value="7">ScrabbleScore</option>
+              <option value="8">HP</option>
+              <option value="9">Attack</option>
+              <option value="10">Defense</option>
+              <option value="11">SpecialAttack</option>
+              <option value="12">SpecialDefense</option>
+              <option value="13">VGC_Usage</option>
+              <option value="14">Gen9Singles_Usage</option>
+              <option value="15">BMI</option>
+              <option value="16">Similarity to Lebron</option>
+              <option value="17">Height and weight difference</option>
+              <option value="18">
+                Total of atomic numbers of elements in the name
+              </option>
+              <option value="19">r34 entries</option>
+              <option value="20">Ranking in other games</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Selected Categories</h2>
+        </div>
+        <ul id="selected-categories"></ul>
+      </div>
+
+      <div class="card">
+        <div class="pokemon-header">
+          <h2 class="card-title">Valid Pokemon</h2>
+          <button id="reverse-list">
+            Sort Order <span id="sort-arrow" class="arrow arrow-down"></span>
+          </button>
+        </div>
+        <ul id="selected-list"></ul>
+      </div>
+    </div>
+
+    <script src="pokemonlistscript.js"></script>
+  </body>
+</html>

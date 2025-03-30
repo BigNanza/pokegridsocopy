@@ -195,21 +195,10 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// Improved close modal button functionality
-closeModalBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  event.stopPropagation();
-  closeModal();
-});
-
-// Function to close the modal and reset its state
-function closeModal() {
+closeModalBtn.addEventListener("click", () => {
+  //console.log("HELLO");
   modal.style.display = "none";
-  pokePickerInput.value = "";
-  suggestionsList.innerHTML = "";
-  selectedKeyword = null;
-  currentIndex = -1;
-}
+});
 
 // Hide the modal when clicking outside the modal content
 window.addEventListener("click", (event) => {
@@ -805,50 +794,7 @@ function showModal() {
   // Show the modal
   modal.style.display = "flex";
 }
-window.onload = function () {
-  // Initialize theme from localStorage
-  initializeTheme();
-
-  // Set up theme toggle button
-  const themeToggle = document.getElementById("theme-toggle");
-  if (themeToggle) {
-    themeToggle.addEventListener("click", toggleTheme);
-  }
-};
-
-// Function to initialize theme based on localStorage or system preference
-function initializeTheme() {
-  // Check if user has previously set a theme preference
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-theme");
-  } else if (savedTheme === "light") {
-    document.body.classList.remove("dark-theme");
-  } else {
-    // If no saved preference, check system preference
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      document.body.classList.add("dark-theme");
-      localStorage.setItem("theme", "dark");
-    } else {
-      localStorage.setItem("theme", "light");
-    }
-  }
-}
-
-// Function to toggle between light and dark themes
-function toggleTheme() {
-  if (document.body.classList.contains("dark-theme")) {
-    document.body.classList.remove("dark-theme");
-    localStorage.setItem("theme", "light");
-  } else {
-    document.body.classList.add("dark-theme");
-    localStorage.setItem("theme", "dark");
-  }
-}
+window.onload = function () {};
 function playAgain() {
   const modal = document.getElementById("end-modal");
   modal.style.display = "none";

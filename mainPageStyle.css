@@ -748,6 +748,30 @@ h1::after {
   flex-direction: column;
   gap: 8px;
 }
+input[list],
+select {
+  width: 100%;
+  padding: 8px 4px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  appearance: none; /* Removes default styling */
+}
+
+input[list]:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+input[list] {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}
 
 .filter-group label {
   font-weight: 500;

@@ -116,6 +116,7 @@ function handleInputChange(event) {
     } else {
       selectedCategories.add(cleanedValue); // Add if not selected
     }
+    console.log(categoryList.indexOf(cleanedValue));
 
     updateValidPokemon();
     updateSelectedCategoriesList(); // Ensure selected categories are displayed
@@ -172,7 +173,7 @@ function updateValidPokemon() {
 
 // Function to verify if a Pokémon fits the selected category
 function verify(mon, category) {
-  //console.log("Verifying " + mon + " with " + category);
+  // console.log("Verifying " + mon + " with " + category);
   let pokemon = pokemonData[mon];
   let one = category;
 
@@ -192,7 +193,7 @@ function verify(mon, category) {
   if (one > 982 && one < 1290 && !pokemon[11].includes(one - 982)) return false;
   if (one > 1289 && one < 1305 && !pokemon[12].includes(one - 1289))
     return false;
-  if (one > 1304 && one < 1310 && pokemon[13] != one - 1304) return false;
+  if (one > 1304 && one < 1310 && pokemon[13] != one - 1305) return false;
   if (one > 1309 && one < 1316 && pokemon[14] != one - 1309) return false;
   if (one > 1315 && pokemon[15] != one - 1315) return false;
 

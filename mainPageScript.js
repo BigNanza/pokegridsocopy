@@ -10,6 +10,24 @@ document.addEventListener("DOMContentLoaded", function () {
       link.classList.add("active");
     }
   });
+
+  // Add click event to mainTitle to redirect to index.html
+  const mainTitle = document.querySelector(".mainTitle");
+  if (mainTitle) {
+    mainTitle.style.cursor = "pointer"; // Change cursor to indicate clickable
+    mainTitle.addEventListener("click", function () {
+      window.location.href = "/";
+    });
+  }
+
+  // Add click event to logo to redirect to index.html
+  const logo = document.querySelector(".logo");
+  if (logo) {
+    logo.style.cursor = "pointer"; // Change cursor to indicate clickable
+    logo.addEventListener("click", function () {
+      window.location.href = "/";
+    });
+  }
 });
 
 /**

@@ -6,6 +6,25 @@ let selectedCategories = new Set(); // Track selected items
 let validPokemon = [];
 let isReversed = false; // Add this with other global variables at the top
 
+// Add click event to mainTitle to redirect to index.html
+document.addEventListener("DOMContentLoaded", function () {
+  const mainTitle = document.querySelector(".mainTitle");
+  if (mainTitle) {
+    mainTitle.style.cursor = "pointer"; // Change cursor to indicate clickable
+    mainTitle.addEventListener("click", function () {
+      window.location.href = "/";
+    });
+  }
+
+  const logo = document.querySelector(".logo");
+  if (logo) {
+    logo.style.cursor = "pointer"; // Change cursor to indicate clickable
+    logo.addEventListener("click", function () {
+      window.location.href = "/";
+    });
+  }
+});
+
 fetch("keywords.json")
   .then((response) => response.json())
   .then((data) => {

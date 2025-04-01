@@ -3,6 +3,24 @@ const closeModalBtn = document.querySelector(".close");
 const pokePickerInput = document.getElementById("poke-picker");
 const suggestionsList = document.getElementById("suggestions-list");
 
+// Add click event to mainTitle to redirect to index.html
+const mainTitle = document.querySelector(".mainTitle");
+if (mainTitle) {
+  mainTitle.style.cursor = "pointer"; // Change cursor to indicate clickable
+  mainTitle.addEventListener("click", function () {
+    window.location.href = "/";
+  });
+}
+
+// Add click event to logo to redirect to index.html
+const logo = document.querySelector(".logo");
+if (logo) {
+  logo.style.cursor = "pointer"; // Change cursor to indicate clickable
+  logo.addEventListener("click", function () {
+    window.location.href = "/";
+  });
+}
+
 let keywords = [];
 let currentIndex = -1; // This will track the currently selected suggestion
 let selectedKeyword = null; // This will track the selected keyword (either typed or clicked)

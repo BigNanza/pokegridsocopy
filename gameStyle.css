@@ -30,11 +30,11 @@
   font-size: 32px;
 } */
 
-/* Animations */
+/* Animations - Enhanced with more dynamic effects */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -47,7 +47,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
   100% {
     transform: scale(1);
@@ -56,7 +56,7 @@
 
 @keyframes slideInRight {
   from {
-    transform: translateX(20px);
+    transform: translateX(25px);
     opacity: 0;
   }
   to {
@@ -67,7 +67,7 @@
 
 @keyframes slideInLeft {
   from {
-    transform: translateX(-20px);
+    transform: translateX(-25px);
     opacity: 0;
   }
   to {
@@ -78,49 +78,93 @@
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 5px rgba(253, 216, 53, 0.5);
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(253, 216, 53, 0.8);
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
   }
   100% {
-    box-shadow: 0 0 5px rgba(253, 216, 53, 0.5);
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
   }
 }
 :root {
-  --primary: #e53935;
-  --secondary: #263238;
-  --accent: #1e88e5;
-  --light: #f5f5f5;
+  /* Pokemon-themed color palette - Enhanced */
+  --primary: #ff3d3d; /* Vibrant Pokeball Red */
+  --secondary: #1a237e; /* Deep Indigo */
+  --accent: #2979ff; /* Bright Pokemon Blue */
+  --light: #f9f9f9;
   --dark: #212121;
-  --success: #43a047;
-  --warning: #fdd835;
-  --info: #29b6f6;
-  --danger: #e53935;
-  --border-radius: 10px;
-  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
+  --success: #4caf50; /* Grass Type Green */
+  --warning: #ffc107; /* Electric Type Yellow */
+  --info: #03a9f4; /* Water Type Blue */
+  --danger: #f44336; /* Fire Type Red */
+  --ghost: #7e57c2; /* Ghost Type Purple */
+  --psychic: #ec407a; /* Psychic Type Pink */
+  --dragon: #5c6bc0; /* Dragon Type Blue-Purple */
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --content-width: 1200px;
   --section-spacing: 40px;
-  --animation-duration: 0.5s;
+  --animation-duration: 0.6s;
   --animation-timing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .header {
   font-family: "Roboto", "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
-  background: linear-gradient(135deg, var(--primary) 0%, #d32f2f 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    #d32f2f 60%,
+    var(--danger) 100%
+  );
   color: white;
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
-  /* border-bottom: 4px solid var(--warning); */
-  animation: fadeIn 0.8s ease-out;
+  border-bottom: 4px solid var(--warning);
+  animation: fadeIn 0.8s var(--animation-timing);
+  transition: var(--transition);
 }
 
 .logo {
@@ -215,8 +259,8 @@
 .button-grid button {
   width: 100%; /* Makes buttons fill their grid cells */
   height: 100%;
-  border: 1px solid #2196f3; /* Adds a border to the buttons */
-  background-color: #2196f3; /* Sets button background color */
+  border: 1px solid var(--accent); /* Using CSS variable for border */
+  background-color: var(--accent); /* Using CSS variable for background */
   color: white; /* Sets button text color */
   font-size: 50px;
   cursor: pointer;
@@ -225,20 +269,60 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
+
+.button-grid button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.button-grid button:hover::before {
+  left: 100%;
+}
+
 .button-grid button:hover {
-  background-color: #1769aa; /* Changes color on hover */
+  background-color: #1565c0; /* Darker blue on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 .button-grid button:disabled:hover {
-  background-color: #2196f3; /* Prevent hover effect when disabled */
+  background-color: var(
+    --ghost
+  ); /* Using ghost type purple for disabled state */
+  transform: none;
+  box-shadow: var(--box-shadow);
 }
+
 .button-grid button:disabled {
-  background-color: #2196f3;
+  background-color: var(
+    --ghost
+  ); /* Using ghost type purple for disabled state */
+  border-color: var(--ghost);
+  opacity: 0.8;
   pointer-events: none;
 }
+
 .button-labels {
-  background-color: #0d3f66;
+  background-color: var(--secondary);
   padding: 0px;
+  transition: var(--transition);
 }
 .modal {
   display: none;
@@ -247,49 +331,75 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Slightly darker background for better contrast */
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.4s var(--animation-timing);
+  backdrop-filter: blur(3px); /* Adds a subtle blur effect to the background */
 }
+
 .modal-content {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
   width: 80%;
   height: 80%;
   text-align: center;
   box-sizing: border-box;
   position: relative;
+  animation: slideInRight 0.5s var(--animation-timing);
+  /* border-top: 4px solid var(--accent); */
+  overflow: hidden;
 }
 .close {
-  color: #aaa;
-  font-size: 50px;
+  color: var(--danger);
+  font-size: 32px;
   cursor: pointer;
   position: absolute;
-  color: red;
-  top: -10px; /* Adjust spacing from the top */
-  right: 15px; /* Adjust spacing from the right */
-  width: 20px; /* Set width for the button */
-  height: 20px; /* Set height for the button */
-  transition: transform 0.3s ease, color 0.3s ease; /* Smooth animation */
-  transform-origin: 100%;
+  top: 10px; /* Adjusted spacing from the top */
+  right: 15px; /* Spacing from the right */
+  width: 40px; /* Increased width for the button */
+  height: 40px; /* Increased height for the button */
+  transition: var(--transition);
+  transform-origin: center;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2); /* Added subtle background */
+  border-radius: 50%; /* Made it circular */
 }
+
 .close:hover {
-  color: red;
-  transform: scale(1.2); /* Slightly enlarge on hover */
+  color: #b71c1c; /* Darker red on hover */
+  transform: rotate(90deg) scale(1.2); /* Rotate and enlarge on hover */
+  text-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
 }
 #poke-picker {
   margin-top: 0.5vh;
   width: 100%;
   height: 8vh;
   font-size: 4vh;
-  padding-right: 50px;
+  padding: 0 60px 0 15px;
   box-sizing: border-box;
-  border-width: 2px;
-  border-color: black;
+  border: 2px solid var(--accent);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  outline: none;
 }
+
+#poke-picker:focus {
+  border-color: var(--warning);
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.25);
+}
+
 #submit-btn {
   position: absolute;
   right: 10px;
@@ -297,63 +407,93 @@
   height: 6vh;
   font-size: 3vh;
   border: none;
-  background-color: #2196f3;
+  background-color: var(--accent);
   color: white;
-  padding: 0 10px;
+  padding: 0 15px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #submit-btn:hover {
-  background-color: #1769aa;
+  background-color: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
 .input-container {
   position: relative;
   width: 95%;
   margin: auto;
+  animation: fadeIn 0.5s ease-out;
 }
+
 .suggestions-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
   border: 1px solid #ccc;
-  max-height: calc(
-    65vh - 30px
-  ); /* Adjust this value based on your modal's padding, header height, etc. */
-  overflow-y: auto; /* Adds a vertical scrollbar if content exceeds max-height */
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  max-height: calc(65vh - 30px);
+  overflow-y: auto;
   position: absolute;
   width: 100%;
   background-color: white;
   z-index: 100;
   font-size: 4vh;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
 }
 
 .suggestions-list li {
-  padding: 10px;
+  padding: 12px 15px;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
   text-align: left;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.suggestions-list li:last-child {
+  border-bottom: none;
 }
 
 .suggestions-list li:hover {
-  background-color: #ddd;
+  background-color: #f5f5f5;
+  transform: translateX(5px);
 }
 
 .suggestions-list li.selected {
-  background-color: #b3e0ff;
+  background-color: rgba(41, 121, 255, 0.1);
+  border-left: 4px solid var(--accent);
 }
 .suggestion-image {
   width: 12vh; /* Set a fixed size for the image */
   height: 12vh;
-  -right: 40%; /* Space between the image and text */
+  margin-right: 15px; /* Space between the image and text */
   vertical-align: middle; /* Align image with text */
+  transition: var(--transition);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  animation: pulse 3s infinite;
 }
+
+.suggestion-image:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
 .modalHeader {
   padding: 2vh;
   text-align: center;
-  background: #2c3e50;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
   color: white;
   font-size: 3vh;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border-bottom: 3px solid var(--warning);
 }
 .end-modal {
   display: none; /* Initially hidden */
@@ -364,11 +504,13 @@
   height: 150px; /* Height as per your initial code */
   justify-content: center;
   align-items: center;
+  z-index: 2000;
+  animation: slideInLeft 0.5s var(--animation-timing);
 }
 
 .end-content {
-  background-color: #333;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+  box-shadow: var(--card-shadow);
   width: 100%;
   height: 150px;
   text-align: left;
@@ -377,25 +519,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   color: white;
   font-size: 40px;
+  border-bottom: 4px solid var(--warning);
 }
 
 .end-text {
   margin: 0 auto;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
 }
 
 #playAgain {
-  padding: 50px;
+  padding: 20px 40px;
   font-size: 20px;
-  background-color: #2196f3;
+  background: linear-gradient(135deg, var(--accent) 0%, #1565c0 100%);
   color: white;
   border: none;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: var(--transition);
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#playAgain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+#playAgain:hover::before {
+  left: 100%;
 }
 
 #playAgain:hover {
-  background-color: #1769aa;
+  background: linear-gradient(135deg, #1565c0 0%, var(--accent) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
 }

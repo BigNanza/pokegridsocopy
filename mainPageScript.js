@@ -1,5 +1,17 @@
 // Initialize navigation links when the page loads
 document.addEventListener("DOMContentLoaded", function () {
+  // Toggle advanced options visibility
+  const toggleButton = document.getElementById("toggleOptions");
+  const advancedOptions = document.getElementById("advancedOptions");
+
+  if (toggleButton && advancedOptions) {
+    toggleButton.addEventListener("click", function () {
+      advancedOptions.classList.toggle("hidden");
+      toggleButton.textContent = advancedOptions.classList.contains("hidden")
+        ? "Show advanced options"
+        : "Hide advanced options";
+    });
+  }
   // Add active class to current page in navigation
   const currentPage = window.location.pathname.split("/").pop();
   const navLinks = document.querySelectorAll(".otherPages a");
